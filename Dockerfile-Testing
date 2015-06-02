@@ -1,0 +1,19 @@
+#base image
+FROM node:0.12.4-slim
+
+#add files ad set workdir
+COPY . /drbx-js
+WORKDIR /drbx-js
+
+#install dependecys
+RUN apt-get update && \
+    apt-get install -y bzip2 libfreetype6 python build-essential \
+                       libfontconfig && \
+    npm install -g tape-run && \
+    npm install -g browserify && \
+    npm install -g phantomjs && \
+    npm cache clean && \
+    npm install
+
+#launch
+CMD npm test

@@ -1,0 +1,20 @@
+{
+  "name": "drbx-js-backbone",
+  "version": "0.0.1",
+  "description": "a drbx-js backbone plugin",
+  "main": "src/drbx-js-backbone.js",
+  "scripts": {
+    "test": "node tests/tests.js"
+  },
+  "keywords": [
+    "dropbox",
+    "backbone",
+    "promises",
+    "plugin"
+  ],
+  "author": "Michael Röber",
+  "license": "MIT",
+  "dependencies": {
+    "drbx-js":
+  }
+}

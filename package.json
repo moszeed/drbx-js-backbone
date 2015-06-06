@@ -12,6 +12,10 @@
         "promises",
         "plugin"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:moszeed/drbx-js-backbone.git"
+    },
     "author": "Michael Röber",
     "license": "MIT",
     "dependencies": {
@@ -28,3 +32,4 @@
         "phantomjs-polyfill": "^0.0.1"
     }
 }
+

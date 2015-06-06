@@ -28,13 +28,13 @@ VSS_VM_BUILD_SCRIPT = <<EOF
     fi
 
     #change folder
-    cd /drbx-js
+    cd /drbx-js-backbone
 
     #cleanup node_modules folder
     rm -rf node_modules
 
     #build testing image
-    docker build -f ./Dockerfile-Build-Modified-Dropbox -t "dropbox-build" .
+    docker build -f ./Dockerfile-Testing -t "dropbox-backbone-testing" .
 EOF
 
 #
@@ -50,8 +50,8 @@ VSS_BOOT_SCRIPT = <<EOF
     echo "------------------------------------------"
     docker --version
     echo "------------------------------------------"
-    echo "Node.js Version in Build-Modified Image" && docker run dropbox-build node -v
-    echo "------------------------------------------"
+    echo "check package.json dependcies"
+    docker run dropbox-backbone-testing npm-check-updates
     echo "\n"
 
     # first, stop all containers
@@ -82,7 +82,7 @@ Vagrant.configure(2) do |config|
         vss.vm.network "public_network"
 
         #shared folders
-        vss.vm.synced_folder ".", "/drbx-js"
+        vss.vm.synced_folder ".", "/drbx-js-backbone"
         vss.vm.synced_folder ".", "/vagrant", disabled: true
 
         #scripts
@@ -93,7 +93,7 @@ Vagrant.configure(2) do |config|
 
     #set name for vm
     config.vm.provider "virtualbox" do |v|
-        v.name = "drbx-js"
+        v.name = "drbx-js-backbone"
         v.customize ["sharedfolder", "add", :id, "--name", "www", "--hostpath", (("//?/" + File.dirname(__FILE__) + "/www").gsub("/","\\"))]
         v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
     end

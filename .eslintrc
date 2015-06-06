@@ -13,6 +13,7 @@
             "beforeColon": false,
             "afterColon": true
         }],
+        "curly"                 : [2, "multi-line"],
         "no-inline-comments"    : 2,
         "no-undef"              : 1,
         "consistent-return"     : 1,

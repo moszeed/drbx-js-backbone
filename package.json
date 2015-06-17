@@ -1,6 +1,6 @@
 {
     "name": "drbx-js-backbone",
-    "version": "0.7.3",
+    "version": "0.7.4",
     "description": "a drbx-js backbone plugin",
     "main": "./src/drbx-js-backbone.js",
     "scripts": {
@@ -19,7 +19,7 @@
     "author": "Michael Röber",
     "license": "MIT",
     "dependencies": {
-        "drbx-js": "^0.1.3",
+        "drbx-js": "^0.2.0",
         "backbone": "^1.2.1",
         "es6-promise-debounce": "^1.0.1"
     },

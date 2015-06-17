@@ -50,7 +50,7 @@
 
 
     /**
-     *  libary Tests
+     *  Libary Tests
      */
 
     test('model.save', function(t) {
@@ -134,6 +134,32 @@
 
             newCollectionInstance.fetch()
                 .catch(t.end);
+    });
+
+    test('collection.create.change', function(t) {
+
+        t.plan(2);
+
+        var Collection = Backbone.Collection.extend({
+            url: '/test/collection'
+        });
+
+        var collectionInstance = new Collection();
+            collectionInstance.fetch()
+                .then(function() {
+
+                    var model = collectionInstance.create({ test: 11 });
+
+                        model.listenTo(model, 'change', function() {
+                            t.ok(true, 'change called');
+                        });
+
+                        model.listenTo(model, 'sync', function() {
+                            t.ok(true, 'sync called');
+                        });
+
+                        model.save('test', '11_1');
+                });
     });
 
     test('model.destroy', function(t) {

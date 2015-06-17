@@ -58,6 +58,9 @@
             }
 
             return Backbone.DrbxJs.writeFileDebounced(targetPath, JSON.stringify(modelData), opts)
+                .then(function() {
+                    return model.toJSON();
+                })
                 .catch(function(err) {
                     console.log(err);
                 });
@@ -156,8 +159,8 @@
                 case 'delete': promise = deleteData(model); break;
             }
 
-            return promise.then(function(response) {
-                if (opts && opts.success) opts.success(response);
+            return promise.then(function(drbxResponse) {
+                if (opts && opts.success) opts.success(drbxResponse);
                 model.trigger('request', model, promise, opts);
             });
         };

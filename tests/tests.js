@@ -2,22 +2,26 @@
 
     "use strict";
 
+
     require('phantomjs-polyfill');
     require('es6-promise').polyfill();
 
     var test = require('tape');
+    var Backbone = null;
 
     //set a generated dropbox token, from the developer console, here !
-    var token = "GGENVqZivHMAAAAAAAAfpqHPXGZ4Jgx8GlmrllwUPTApBzEiN9YoJr7wWIqYX6UT";
-    if (token === null) {
-        throw new Error('please set a generated dropbox token');
-    }
+    var token = null;
+
+    test('token check', function(t) {
+        t.ok(token !== null, 'token is set');
+        t.end();
+    });
 
     //check if require works
     test('require', function(t) {
 
         try {
-            require('../src/drbx-js-backbone.js');
+            Backbone = require('../src/drbx-js-backbone.js');
             t.ok(true, 'require finished');
             t.end();
         }
@@ -25,8 +29,6 @@
             t.end(err);
         }
     });
-
-    var Backbone = require('../src/drbx-js-backbone.js');
 
 
     test('initialize connection', function(t) {

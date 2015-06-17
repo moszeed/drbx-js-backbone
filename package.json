@@ -1,6 +1,6 @@
 {
     "name": "drbx-js-backbone",
-    "version": "0.7.2",
+    "version": "0.7.3",
     "description": "a drbx-js backbone plugin",
     "main": "./src/drbx-js-backbone.js",
     "scripts": {
@@ -27,7 +27,7 @@
         "tape"              : "^4.0.0",
         "tape-run"          : "^1.0.0",
         "jquery"            : "^2.1.4",
-        "es6-promise"       : "^2.1.1",
+        "es6-promise"       : "^2.3.0",
         "phantom"           : "^0.7.2",
         "phantomjs-polyfill": "^0.0.1"
     }

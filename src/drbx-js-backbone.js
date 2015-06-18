@@ -5,9 +5,10 @@
     var debounce = require("es6-promise-debounce");
     var DrbxJs   = require("drbx-js");
     var Backbone = require("backbone");
-        Backbone.oldSync = Backbone.sync;
 
+        Backbone.oldSync = Backbone.sync;
         Backbone.DrbxJs = DrbxJs;
+
         Backbone.DrbxJs.writeFileDebounced = debounce(Backbone.DrbxJs.writeFile, 200);
 
         //forwarding login functions
@@ -37,6 +38,7 @@
             );
         }
 
+        var debounceCache = {};
 
         /**
          * write data to in url given file
@@ -57,11 +59,18 @@
                 modelData  = model.collection.toJSON();
             }
 
-            return Backbone.DrbxJs.writeFileDebounced(targetPath, JSON.stringify(modelData), opts)
+            // create debounce per targetPath
+            if (!debounceCache[targetPath]) {
+                debounceCache[targetPath] = debounce(Backbone.DrbxJs.writeFile, 200);
+            }
+
+            return debounceCache[targetPath](targetPath, JSON.stringify(modelData), opts)
                 .then(function() {
+                    delete debounceCache[targetPath];
                     return model.toJSON();
                 })
                 .catch(function(err) {
+                    delete debounceCache[targetPath];
                     console.log(err);
                 });
         }

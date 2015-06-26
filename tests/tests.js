@@ -55,6 +55,42 @@
      *  Libary Tests
      */
 
+    test('model.fetch ("not available")', function(t) {
+
+        var Model = Backbone.Model.extend({
+            url: '/test/model'
+        });
+
+        var newModelInstance = new Model();
+            newModelInstance.fetch()
+                .then(function() {
+                    t.fail('there should be a 404');
+                    t.end();
+                })
+                .catch(function() {
+                    t.end();
+                });
+    });
+
+    test('collection.fetch ("not available")', function(t) {
+
+        var Collection = Backbone.Collection.extend({
+            url: '/test/collection'
+        });
+
+        var newCollectionInstance = new Collection();
+            newCollectionInstance.fetch()
+                .then(function() {
+                    t.fail('there should be a 404');
+                    t.end();
+                })
+                .catch(function() {
+                    t.end();
+                });
+    });
+
+
+
     test('model.save', function(t) {
 
         var Model = Backbone.Model.extend({

@@ -72,7 +72,7 @@ Vagrant.configure(2) do |config|
 
   ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
-  config.vm.box = "codekitchen/boot2docker"
+  config.vm.box = "moszeed/boot2docker"
 
     #config for app
     config.vm.define :vss do |vss|

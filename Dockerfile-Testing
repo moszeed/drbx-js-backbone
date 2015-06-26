@@ -1,5 +1,5 @@
 #base image
-FROM node:0.12.4-slim
+FROM node:0.12.5-slim
 
 # Exclude npm cache from the image
 VOLUME /root/.npm

@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>drbx-js-backbone by moszeed</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/moszeed/drbx-js-backbone">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/moszeed/drbx-js-backbone/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/moszeed/drbx-js-backbone/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>drbx-js-backbone</h1>
+          <p>a drbx.js backbone plugin, to sync to Dropbox</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/moszeed">moszeed</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="drbx-js-backbone" class="anchor" href="#drbx-js-backbone" aria-hidden="true"><span class="octicon octicon-link"></span></a>drbx-js-backbone</h1>
+
+<p><a href="https://gitter.im/moszeed/drbx-js-backbone?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/moszeed/drbx-js-backbone"></a><br>
+a promise wrapper for backbone, to sync to a dropbox account</p>
+
+<h1>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>how to use</h1>
+
+<p>install from npm</p>
+
+<pre><code>npm i drbx-js-backbone
+</code></pre>
+
+<p>and require like this</p>
+
+<pre><code>var Backbone = require('drbx-js-backbone);
+</code></pre>
+
+<h2>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>usage examples</h2>
+
+<h4>
+<a id="init-with-popup-driver-and-login" class="anchor" href="#init-with-popup-driver-and-login" aria-hidden="true"><span class="octicon octicon-link"></span></a>init, with popup driver and login</h4>
+
+<pre><code>var Backbone = require('drbx-js-backbone);
+    Backbone.init({
+        client  : { key : [Dropbox API Key] },
+        auth    : new Dropbox._Dropbox.AuthDriver.Popup({
+            receiverUrl     : [receiverUrl],
+            rememberUser    : true
+        })
+    });
+
+    Backbone.login()
+        .then(function isLoggedIn() {
+            console.log('user is logged in');
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+</code></pre>
+
+<h4>
+<a id="get-accountinfo" class="anchor" href="#get-accountinfo" aria-hidden="true"><span class="octicon octicon-link"></span></a>get accountInfo</h4>
+
+<pre><code>Backbone.DrbxJs.accountInfo()
+    .then(function getUserData(userData) {
+        console.log(userData);
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+</code></pre>
+
+<h4>
+<a id="create-a-model" class="anchor" href="#create-a-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>create a model</h4>
+
+<pre><code>var Model = new Backbone.Model.extend({
+    url: '/path/to/file'
+});
+</code></pre>
+
+<h4>
+<a id="create-a-collection" class="anchor" href="#create-a-collection" aria-hidden="true"><span class="octicon octicon-link"></span></a>create a collection</h4>
+
+<pre><code>var Collection = new Backbone.Collection.extend({
+    url: '/path/to/file'
+    model: Model
+});
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

@@ -1,7 +1,7 @@
 #drbx-js-backbone
 
 [![Join the chat at https://gitter.im/moszeed/drbx-js-backbone](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/moszeed/drbx-js-backbone?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  
-a promise wrapper for backbone, to sync to a dropbox account
+a drbx.js backbone plugin, to sync to Dropbox
 
 #how to use
 install from npm
